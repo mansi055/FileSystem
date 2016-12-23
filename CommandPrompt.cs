@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,13 @@ namespace FileSystem
 {
     class CommandPrompt
     {
+        public CommandPrompt()
+        {
+            using (StreamWriter sw = new StreamWriter("./DirectoryInfo.txt"))
+            {
+                sw.WriteLine(@"C:\Users\manverma\Documents\Visual Studio 2015\Projects\FileSystem\FileSystem\Z\");
+            }
+        }
         static void Main(string[] args)
         {
             string userInput = null;
@@ -16,7 +24,7 @@ namespace FileSystem
             //Running shell until user enter "exit"
             do
             {
-                //Console.Write(DirectoryInformation.GetvisibleDirectoryName());
+                Console.Write(DirectoryInformation.GetVisibleDirectoryName() + ">");
                 userInput = Console.ReadLine();
                 Console.WriteLine(userInput);
                 shell.execute(userInput);

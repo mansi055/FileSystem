@@ -12,7 +12,7 @@ namespace FileSystem
         static void Main(string[] args)
         {
             //Console.Write("Running Make Directory!!! \n");
-            string path = null;
+            string path = DirectoryInformation.GetCurrentWorkingDirectory();
 
             if (args.Length == 0)
             {
@@ -20,13 +20,17 @@ namespace FileSystem
                 return;
             }
 
-            path = args[0];
+            path = path + args[0];
 
             try
             {
                 if (!Directory.Exists(path))
                 {
                     System.IO.DirectoryInfo directoryInfo = Directory.CreateDirectory(path);
+                }
+                else
+                {
+                    Console.Write("\nThere is already a file with this name.");
                 }
 
             }

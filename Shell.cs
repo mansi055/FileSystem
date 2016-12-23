@@ -12,7 +12,9 @@ namespace FileSystem
         private Dictionary<string, string> commandsDictionary = new Dictionary<string, string>()
         {
             { "md", @".\MakeDirectory.exe"},
-            { "dir", @".\ListDirectory.exe"}
+            { "dir", @".\ListDirectory.exe"},
+            { "cd", @".\CurrentDirectory.exe"},
+            { "del dir", @".\DeleteDirectory.exe"}
         };
 
         public int execute(string input)
@@ -32,6 +34,11 @@ namespace FileSystem
                 if (inputs.Length == 2)
                 {
                     argument = inputs[1];
+                }
+                else if (inputs.Length == 3 && inputs[0].Equals("del"))
+                {
+                    argument = inputs[2];
+                    command = inputs[0] + " " + inputs[1];
                 }
                 else
                 {
