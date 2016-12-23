@@ -14,15 +14,20 @@ namespace FileSystem
             { "md", @".\MakeDirectory.exe"},
             { "dir", @".\ListDirectory.exe"},
             { "cd", @".\CurrentDirectory.exe"},
-            { "del dir", @".\DeleteDirectory.exe"}
+            { "deldir", @".\DeleteDirectory.exe"},
+            { "help", @".\HelpCommand.exe"}
         };
+        
+        public Dictionary<string, string> GetCommandDictionary()
+        {
+            return commandsDictionary;
+        }
 
         public int execute(string input)
         {
             try
             {
                 string[] inputs = input.Split(' ');
-
                 string command = inputs[0];
                 string argument = null;
 
@@ -30,15 +35,23 @@ namespace FileSystem
                 {
                     return 0;
                 }
-
+                
                 if (inputs.Length == 2)
                 {
-                    argument = inputs[1];
+                    if (inputs[0].Equals("del") && inputs[1].Equals("dir"))
+                    {
+                        argument = "";
+                    }
+                    else
+                    {
+                        argument = inputs[1];
+                    }
                 }
+
                 else if (inputs.Length == 3 && inputs[0].Equals("del"))
                 {
                     argument = inputs[2];
-                    command = inputs[0] + " " + inputs[1];
+                    command = inputs[0] + inputs[1];
                 }
                 else
                 {

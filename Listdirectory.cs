@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FileSystem
+namespace FileSystem 
 {
-    class ListDirectory
+    class ListDirectory : Command
     {
         static void Main(string[] args)
         {
@@ -52,6 +52,12 @@ namespace FileSystem
                 string[] fileNames = file.Split('\\');
                 Console.Write("\n" + fileNames[fileNames.Length - 1]);
             }
+        }
+
+        public void help()
+        {
+            Console.Write(@"\nDisplays a list of files and subdirectories in a directory.
+                            DIR[drive:][path][filename]");
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileSystem
 {
-    class CurrentDirectory
+    class CurrentDirectory : Command
     {
         static void Main(string[] args)
         {
@@ -27,12 +27,16 @@ namespace FileSystem
                     string curDir = DirectoryInformation.GetCurrentWorkingDirectory();
                     string path = curDir + args[0];
 
+                    if ((args[0].Equals("..") || args[0].Equals(".")) && DirectoryInformation.IsRootDirectory(curDir))
+                    {
+                        return;
+                    }
+
                     if (args[0].Equals("..") && !DirectoryInformation.IsRootDirectory(curDir))
                     {
                         string curDirectory = DirectoryInformation.GetCurrentWorkingDirectory();
                         string parentDirectory = Directory.GetParent(Directory.GetParent(curDirectory).FullName).FullName;
                         DirectoryInformation.SetVisibleDirectoryName(parentDirectory);
-                        return;
                     }
                     else if (args[0].Equals(".") && !DirectoryInformation.IsRootDirectory(curDir))
                     {
@@ -56,5 +60,17 @@ namespace FileSystem
             }
         }
 
+        public void help()
+        {
+            Console.Write(@"\nDisplays the name of or changes the current directory. CD[..] \nSpecifies that you 
+                want to change to the parent directoy
+                ..Specifies that you want to change to the parent directory.
+
+                Type CD drive: to display the current directory in the specified drive.
+                Type CD without parameters to display the current drive and directory.
+
+                Use the / D switch to change current drive in addition to changing current
+                directory for a drive.");
+        }
     }
 }

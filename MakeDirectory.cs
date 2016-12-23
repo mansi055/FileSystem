@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileSystem
 {
-    class MakeDirectory
+    class MakeDirectory : Command
     {
         static void Main(string[] args)
         {
@@ -39,6 +39,14 @@ namespace FileSystem
                 Console.Write(ioex.Message);
             }
 
+        }
+
+        public void help()
+        {
+            Console.Write(@"\nCreates a directory.
+                            MD[drive:]path
+                            If Command Extensions are enabled MD changes as follows:
+                            MD creates any intermediate directories in the path, if needed.");  
         }
     }
 }

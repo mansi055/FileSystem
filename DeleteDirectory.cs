@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FileSystem
 {
-    class DeleteDirectory
+    class DeleteDirectory : Command
     {
         static void Main(string[] args)
         {
@@ -43,6 +43,13 @@ namespace FileSystem
             {
                 Console.Write(ex.Message);
             }
+        }
+
+        public void help()
+        {
+            Console.Write(@"\nRemoves (deletes) a directory.
+                            DEL DIR[/ S][/ Q][drive:]path
+                            DEL DIR[/ S][/ Q][drive:]path");
         }
     }
 }
