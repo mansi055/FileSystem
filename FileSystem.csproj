@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command.cs" />
     <Compile Include="CurrentDirectory.cs" />
     <Compile Include="DeleteDirectory.cs" />
     <Compile Include="DirectoryInformation.cs" />
+    <Compile Include="HelpCommand.cs" />
     <Compile Include="Listdirectory.cs" />
     <Compile Include="MakeDirectory.cs" />
     <Compile Include="CommandPrompt.cs" />

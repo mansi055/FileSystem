@@ -44,13 +44,13 @@ namespace FileSystem
                     }
                     else
                     {
-                        argument = inputs[1];
-                    }
+                        argument = PathInfo.IsRooted(inputs[1]) ? PathInfo.GetCorrectPath(inputs[1]) : inputs[1];
+                   }
                 }
 
                 else if (inputs.Length == 3 && inputs[0].Equals("del"))
                 {
-                    argument = inputs[2];
+                    argument = PathInfo.IsRooted(inputs[2]) ? PathInfo.GetCorrectPath(inputs[2]) : inputs[2];
                     command = inputs[0] + inputs[1];
                 }
                 else
