@@ -25,6 +25,12 @@ namespace FileSystem
                 Console.WriteLine();
                 Console.Write(DirectoryInformation.GetVisibleDirectoryName() + ">");
                 userInput = Console.ReadLine();
+                if (userInput.Equals("exit"))
+                {
+                    Console.Write("Press any key to exit... ");
+                    Console.ReadKey();
+                    break;
+                }
                 shell.execute(userInput);
                 Console.WriteLine();
                

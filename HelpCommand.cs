@@ -21,7 +21,7 @@ namespace FileSystem
                 case "md" : MakeDirectory makedir = new MakeDirectory();
                     makedir.help();
                     break;
-                case "deldir" : DeleteDirectory deldir = new DeleteDirectory();
+                case "del dir" : DeleteDirectory deldir = new DeleteDirectory();
                     deldir.help();
                     break;
                 case "help": HelpCommand cmd = new HelpCommand();
