@@ -56,7 +56,7 @@ namespace FileSystem
 
         public void help()
         {
-            Console.Write(@"\nDisplays a list of files and subdirectories in a directory.
+            Console.Write(@"Displays a list of files and subdirectories in a directory.
                             DIR[drive:][path][filename]");
         }
     }

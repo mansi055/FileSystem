@@ -25,8 +25,8 @@ namespace FileSystem
                 Console.WriteLine();
                 Console.Write(DirectoryInformation.GetVisibleDirectoryName() + ">");
                 userInput = Console.ReadLine();
-                Console.WriteLine(userInput);
                 shell.execute(userInput);
+                Console.WriteLine();
                
             } while (userInput != "exit");
         }

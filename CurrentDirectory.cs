@@ -62,7 +62,7 @@ namespace FileSystem
 
         public void help()
         {
-            Console.Write(@"\nDisplays the name of or changes the current directory. CD[..] \nSpecifies that you 
+            Console.Write(@"Displays the name of or changes the current directory. CD[..] Specifies that you 
                 want to change to the parent directoy
                 ..Specifies that you want to change to the parent directory.
 

@@ -6,37 +6,26 @@ using System.Threading.Tasks;
 
 namespace FileSystem
 {
-    class HelpCommand
+    class HelpCommand : Command
     {
         protected void PrintInstrucctions(string command)
         {
             switch (command)
             {
-                case "cd" :  
-                    Console.Write(@"\nDisplays the name of or changes the current directory. CD[..] \nSpecifies that you 
-                want to change to the parent directoy
-                ..Specifies that you want to change to the parent directory.
-
-                Type CD drive: to display the current directory in the specified drive.
-                Type CD without parameters to display the current drive and directory.
-
-                Use the / D switch to change current drive in addition to changing current
-                directory for a drive.");
+                case "cd" :  CurrentDirectory cur = new CurrentDirectory();
+                    cur.help();
                     break;
-                case "dir" :
-                    Console.Write(@"\nDisplays a list of files and subdirectories in a directory.
-                            DIR[drive:][path][filename]");
+                case "dir" : ListDirectory listdir = new ListDirectory();
+                    listdir.help();
                     break;
-                case "md" :
-                    Console.Write(@"\nCreates a directory.
-                            MD[drive:]path
-                            If Command Extensions are enabled MD changes as follows:
-                            MD creates any intermediate directories in the path, if needed.");
+                case "md" : MakeDirectory makedir = new MakeDirectory();
+                    makedir.help();
                     break;
-                case "del dir" :
-                    Console.Write(@"\nRemoves (deletes) a directory.
-                            DEL DIR[/ S][/ Q][drive:]path
-                            DEL DIR[/ S][/ Q][drive:]path");
+                case "deldir" : DeleteDirectory deldir = new DeleteDirectory();
+                    deldir.help();
+                    break;
+                case "help": HelpCommand cmd = new HelpCommand();
+                    cmd.help();
                     break;
                 default: Console.Write($"{command} not found.");
                     break;
@@ -52,13 +41,19 @@ namespace FileSystem
                 Dictionary<string, string>.KeyCollection keys = shell.GetCommandDictionary().Keys;
                 foreach (string key in keys)
                 {
-                    Console.Write("\n" + key.ToUpper());
+                    Console.Write("\n" + key.ToUpper() + ":");
+                    cmd.PrintInstrucctions(key.ToLower());
                 }
             }
             else
             {
                 cmd.PrintInstrucctions(args[0]);
             }
+        }
+
+        public void help()
+        {
+            Console.Write("Provides information about commands.");
         }
     }
 }

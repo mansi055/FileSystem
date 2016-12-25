@@ -47,7 +47,7 @@ namespace FileSystem
 
         public void help()
         {
-            Console.Write(@"\nRemoves (deletes) a directory.
+            Console.Write(@"Removes (deletes) a directory.
                             DEL DIR[/ S][/ Q][drive:]path
                             DEL DIR[/ S][/ Q][drive:]path");
         }

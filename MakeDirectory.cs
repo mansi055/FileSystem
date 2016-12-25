@@ -43,7 +43,7 @@ namespace FileSystem
 
         public void help()
         {
-            Console.Write(@"\nCreates a directory.
+            Console.Write(@"Creates a directory.
                             MD[drive:]path
                             If Command Extensions are enabled MD changes as follows:
                             MD creates any intermediate directories in the path, if needed.");  
